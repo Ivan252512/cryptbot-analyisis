@@ -1,56 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Trade BTC/BUSD period=5m</title>
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <center><h1>Trade BTC/BUSD period=5m</h1></center>
-    <!-- partial:index.partial.html -->
-    <div id="gamediv" class="images">
-    </div>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="AI Trading Bot Explanation" />
+        <meta name="author" content="" />
+        <title>Cryptbot - How It Works</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top">Cryptbot</a>
+                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#how-it-works">How It Works</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#indicators">Indicators</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#neural-network">Neural Network</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#results">Results</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-    <div id="image-viewer">
-      <span class="close">&times;</span>
-      <img class="modal-content" id="full-image" />
-    </div>
-    <!-- partial -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="./script.js"></script>
-    <script>
-      $(document).ready(function () {
-        function insert(img_route){
-            var src = document.getElementById("gamediv");
-            var img = document.createElement("img");
-            img.src = img_route;
-            src.appendChild(img);
-        }
-        function get_analysis() {
-          var settings = {
-            url: "https://kcug2oiz5d.execute-api.ap-northeast-1.amazonaws.com/stg/data/get_analysis",
-            method: "GET",
-            timeout: 0,
-          };
+        <header class="masthead bg-primary text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <h1 class="masthead-heading text-uppercase mb-0">Cryptbot</h1>
+                <p class="masthead-subheading font-weight-light mb-0">AI-powered cryptocurrency trading based on Swing Trading</p>
+            </div>
+        </header>
 
-          $.ajax(settings).done(function (response) {
-            console.log(response.message);
-            const object = response.message;
-            for (const property in object) {
-              console.log(property);
-              console.log(object[property][0]);
-              for (let index = 0; index < object[property].length; index++) {
-                const element = object[property][index];
-                console.log(element);
-                insert(element)
-              }
-            }
-          });
-        }
+        <section class="page-section" id="how-it-works">
+            <div class="container">
+                <h2 class="text-center text-uppercase text-secondary mb-0">How It Works</h2>
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-robot"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <p class="lead text-center">This trading bot analyzes cryptocurrency market data using technical indicators and a neural network to make automated trading decisions.</p>
+                <ul>
+                    <li>Fetches historical and real-time market data</li>
+                    <li>Applies technical indicators to detect trading opportunities</li>
+                    <li>Uses a trained neural network to classify buy/sell signals</li>
+                    <li>Executes trades based on risk management rules</li>
+                </ul>
+            </div>
+        </section>
 
+        <section class="page-section bg-primary text-white" id="indicators">
+            <div class="container">
+                <h2 class="text-center text-uppercase">Technical Indicators</h2>
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <p class="lead text-center">The bot uses the following indicators to identify potential trades:</p>
+                <ul>
+                    <li>Exponential Moving Averages (EMA 10, EMA 55, EMA 200)</li>
+                    <li>Relative Strength Index (RSI)</li>
+                    <li>Average Directional Index (ADX)</li>
+                    <li>Squeeze Momentum Indicator (Lazy Bear version)</li>
+                    <li>Change Ratio for trend analysis</li>
+                </ul>
+            </div>
+        </section>
 
-        get_analysis();
-      });
-    </script>
-  </body>
+        <section class="page-section" id="neural-network">
+            <div class="container">
+                <h2 class="text-center text-uppercase text-secondary mb-0">Neural Network</h2>
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-brain"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <p class="lead text-center">The neural network is trained to classify market conditions and generate trading signals.</p>
+                <ul>
+                    <li>Trained on historical price data and technical indicators</li>
+                    <li>Uses a deep learning model with multiple layers</li>
+                    <li>Predicts probabilities of market conditions for buy/sell signals</li>
+                    <li>Continuously updates based on real-time market feedback</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="page-section" id="results">
+            <div class="container">
+                <h2 class="text-center text-uppercase text-secondary mb-0">Backtesting Results</h2>
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <p class="lead text-center">These are backtesting results of the bot's strategy on different timeframes.</p>
+                <div class="text-center">
+                    <h3>DOT/USDT - 4H</h3>
+                    <img src="assets/img/stop_loss_graphic_dotusdt_4h.png" class="img-fluid" alt="Backtesting DOT/USDT 4H" />
+                    <p>Red and gray lines represent wallet balance simulations. Stars (blue and red) indicate dynamic stop loss, and dots (red and green) show buy/sell points.</p>
+
+                    <h3>BTC/USDT - 1D</h3>
+                    <img src="assets/img/stop_loss_graphic_btcusdt_1d.png" class="img-fluid" alt="Backtesting BTC/USDT 1D" />
+                    <p>Shows performance on a daily timeframe using swing trading principles.</p>
+
+                    <h3>BTC/USDT - 1W</h3>
+                    <img src="assets/img/stop_loss_graphic_btcusdt_1w.png" class="img-fluid" alt="Backtesting BTC/USDT 1W" />
+                    <p>Weekly timeframe analysis showing the long-term trend strategy.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer text-center">
+            <div class="container">
+                <p class="lead mb-0">For code access or inquiries, contact: ivan31416neda@gmail.com</p>
+            </div>
+        </footer>
+    </body>
 </html>
